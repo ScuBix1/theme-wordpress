@@ -3,6 +3,10 @@
         die();
     }
     get_header();
-    the_content();
+?>
+<main class="container">
+    <?php the_content(); ?>
+</main>
+<?php
     get_footer();
 ?>

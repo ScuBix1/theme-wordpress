@@ -15,4 +15,9 @@ if(!function_exists("theme_entrainement_enqueue")){
     }
     add_action('wp_enqueue_scripts', 'theme_entrainement_enqueue');
 }
+add_action('init', function(){
+    register_nav_menus(array(
+        'menu-principal' => __('Menu Principal', 'Theme_Entrainement')
+    ));
+});
 ?>

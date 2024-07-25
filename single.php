@@ -3,26 +3,7 @@ if (!defined('ABSPATH')) {
     die();
 }
 get_header();
-if(isset($_POST['nonce'])){
-    wp_insert_comment(array(
-        'comment_post_ID' => get_the_ID(),
-        'comment_author' => sanitize_text_field($_POST['name']),
-        'comment_author_email' => sanitize_email($_POST['mail']),
-        'comment_author_url' => '',
-        'comment_content' => sanitize_textarea_field($_POST['message']),
-        'comment_author_IP' => '127.0.0.1',
-        'comment_agent' => $_SERVER['HTTP_USER_AGENT'],
-        'comment_type' => '',
-        'comment_date' => date('Y-m-d H:i:s'),
-        'comment_date_gmt' => date('Y-m-d H:i:s'),
-        'comment_approuved' => 0,
-    ));
-?>
-<script type="text/javascript">
-    window.location = location.href;
-</script>
-<?php
-}
+
 while (have_posts()) {
     the_post();
 ?>
@@ -56,30 +37,31 @@ while (have_posts()) {
                 <div class="container">
                     <div class="row">
                         <div class="col-8">
-                            <form action="" id="formulaire" method="POST" name="comment-form" class="comment-form  needs-validation" novalidate>
-                                <h3>Donnes nous ton avis !</h3>
-                                <p>Ton adresse mail ne sera pas publiée.</p>
+                            <form method="POST" action="" name="form" class="comment-form" id="form">
+                                <h3>Laisses un commentaire ! </h3>
+                                <p>L'adresse email ne sera pas publiée</p>
                                 <fieldset>
                                     <div class="row">
                                         <p>
                                         <div class="form-group col-xs-12 col-sm-9 col-lg-10">
-                                            <input type="text" name="name" id="name" class="form-control" placeholder="Prénom" value=''>
+                                            <input type="text" id="name" class="form-control" name="name" placeholder="Votre pseudo..." required>
                                         </div>
                                         </p>
                                         <p>
                                         <div class="form-group col-xs-12 col-sm-9 col-lg-10">
-                                            <input type="text" name="mail" id="mail" class="form-control" placeholder="Adresse mail">
+                                            <input type="email" id="email" class="form-control" name="email" placeholder="Votre email..." required>
                                         </div>
                                         </p>
                                         <p>
                                         <div class="form-group col-xs-12 col-sm-9 col-lg-10">
-                                            <textarea name="message" id="message" class="form-control" placeholder="Tapez votre commentaire..."></textarea>
+                                            <textarea id="message" name="message" class="form-control" placeholder="Votre commentaire..." required></textarea>
                                         </div>
                                         </p>
                                     </div>
                                 </fieldset>
-                                <input type="hidden" name="nonce" value="<?= wp_create_nonce(); ?>">
-                                <button type="button" class="btn btn-primary" onclick="confirmationSubmit()">Publier</button>
+                                <input type="hidden" name="nonce" value="<?php echo wp_create_nonce('submit_comment_nonce'); ?>">
+                                <input type="hidden" name="post_id" value="<?php echo get_the_ID(); ?>">
+                                <button type="submit" name="submit_comment" class="btn btn-primary">Envoyer</button>
                             </form>
                         </div>
                     </div>

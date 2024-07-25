@@ -14,7 +14,6 @@ if (!defined('ABSPATH')) {
     <title><?php bloginfo('name'); ?> <?php (!empty(wp_title())) ? '-' . wp_title() : '' ?></title>
     <link href="<?php echo get_template_directory_uri() ?>/assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo get_template_directory_uri()?>/assets/css/blog.css" rel="stylesheet" />
-    <script type="text/javascript" src="<?php echo get_template_directory_uri()?>/assets/js/functions.js"></script>
     <?php wp_head(); ?>
 </head>
 

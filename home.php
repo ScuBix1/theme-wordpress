@@ -38,7 +38,7 @@ get_header();
             ?>
         </div>
         <div class="col-4">
-
+            <?= get_sidebar(); ?>
         </div>
     </div>
 </main>

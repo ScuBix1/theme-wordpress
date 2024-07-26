@@ -30,7 +30,9 @@ while (have_posts()) {
                     </div>
                 </div>
             </div>
-            <div class="col-4"></div>
+            <div class="col-4">
+                <?= get_sidebar(); ?>
+            </div>
         </div>
         <div class="row">
             <section class="content-item">

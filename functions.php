@@ -2,6 +2,7 @@
 if(!defined("ABSPATH")){
     die();
 }
+/* enregistrer le commentaire d'un blog */
 function custom_insert_comment() {
     if (isset($_POST['submit_comment']) && isset($_POST['nonce']) && wp_verify_nonce($_POST['nonce'], 'submit_comment_nonce')) {
         $comment_data = array(
@@ -16,8 +17,6 @@ function custom_insert_comment() {
         );
 
         wp_insert_comment($comment_data);
-        
-        // Redirect to the same post to avoid resubmission
         wp_redirect(get_permalink($comment_data['comment_post_ID']));
         exit;
     }

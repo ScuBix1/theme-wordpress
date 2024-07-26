@@ -14,6 +14,7 @@ if (!defined('ABSPATH')) {
     <title><?php bloginfo('name'); ?> <?php (!empty(wp_title())) ? '-' . wp_title() : '' ?></title>
     <link href="<?php echo get_template_directory_uri() ?>/assets/css/bootstrap.min.css" rel="stylesheet">
     <link href="<?php echo get_template_directory_uri()?>/assets/css/blog.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <?php wp_head(); ?>
 </head>
 

@@ -3,7 +3,7 @@ if (!defined('ABSPATH')) {
     die();
 }
 get_header();
-
+$comments = get_comments('post_id=' . get_the_ID());
 while (have_posts()) {
     the_post();
 ?>
@@ -63,6 +63,16 @@ while (have_posts()) {
                                 <input type="hidden" name="post_id" value="<?php echo get_the_ID(); ?>">
                                 <button type="submit" name="submit_comment" class="btn btn-primary">Envoyer</button>
                             </form>
+                            <h3><?= sizeof($comments) ?> Commentaire(s)</h3>
+                            <?php foreach ($comments as $comment) { ?>
+                                <div class="card bg-light bg-gradient my-3">
+                                    <div class="card-body">
+                                        <h5 class="card-title d-flex align-items-center gap-2"><i class="fa-solid fa-user"></i><?= ' ' . $comment->comment_author ?> </h5>
+                                        <p>Publié le <?= date('Y-m-d', strtotime($comment->comment_date)) ?></p>
+                                        <p class="card-text"><?= $comment->comment_content ?></p>
+                                    </div>
+                                </div>
+                            <?php } ?>
                         </div>
                     </div>
                 </div>

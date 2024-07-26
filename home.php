@@ -14,6 +14,7 @@ get_header();
     <div class="row">
         <div class="col-8">
             <h1>Bienvenue sur mon blog</h1>
+            <h3>Il y a <?= wp_count_posts()->publish; ?> Publication(s)</h3>
             <?php
             while (have_posts()) {
                 the_post();

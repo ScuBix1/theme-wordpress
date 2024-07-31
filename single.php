@@ -19,7 +19,16 @@ while (have_posts()) {
             <div class="col-8">
                 <h1><?php the_title(); ?></h1>
                 <div class="card mb-3 blog-container">
-                    <?php the_post_thumbnail('full', array('class' => 'img-fluid img-blog-grande')) ?>
+                    <?php //the_post_thumbnail('full', array('class' => 'img-fluid img-blog-grande')) ?>
+                    <?php 
+                    if(empty(get_post_meta(get_the_ID(), 'youtube')[0])){
+                        the_post_thumbnail('full', array('class' => 'img-fluid img-blog-grande'));
+                    }else{
+                        ?>
+                        <iframe width="800" height="500" frameborder="0" src="https://www.youtube.com/embed/<?= get_post_meta(get_the_ID(), 'youtube')[0]?>"></iframe>
+                        <?php
+                    }
+                    ?>
                     <div class="card-body">
                         <p>
                             <?= the_category(' '); ?> | <a href="<?= get_author_posts_url(get_the_author_meta('ID')); ?>"><?php the_author(); ?></a> | <?= get_the_date('Y-m-d'); ?>

@@ -8,7 +8,16 @@ $categories = get_categories(array(
 ));
 ?>
 <div class="row">
-    <div class="col-12"></div>
+    <div class="col-12">
+        <h3>Rechercher</h3>
+        <?php //get_search_form(); ?>
+        <form action="" method="GET" name="search">
+            <div class="input-group mb-3">
+                <input type="text" name="s" id="s" id="form-control" placeholder="Rechercher..." value="<?php sanitize_text_field($_GET['s'])?>">
+                <button class="btn btn-outline-secondary" type="button" id="button-addon2" title="Rechercher" onclick="searchArticle()">Rechercher</button>
+            </div>
+        </form>
+    </div>
     <div class="col-12">
         <h3>Catégories</h3>
         <div class="list-group">
